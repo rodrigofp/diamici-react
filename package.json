@@ -2,11 +2,11 @@
   "name": "diamici",
   "version": "1.0.0",
   "engines": {
-    "node": "^15.14.0",
+    "node": "^15.2.1",
     "npm": "^7.12.0"
   },
   "description": "diamici app",
-  "main": "index.js",
+  "main": "app.js",
   "author": "Shad",
   "license": "MIT",
   "scripts": {
@@ -49,5 +49,6 @@
   },
   "devDependencies": {
     "webpack-cli": "^4.2.0"
-  }
+  },
+  "repository": "git@github.com:rodrigofp/diamici-react.git"
 }
