@@ -1,6 +1,10 @@
 {
-  "name": "indecision",
+  "name": "diamici",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.13.0",
+    "yarn": "1.19.2"
+  },
   "description": "diamici app",
   "main": "index.js",
   "author": "Shad",
