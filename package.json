@@ -2,8 +2,8 @@
   "name": "diamici",
   "version": "1.0.0",
   "engines": {
-    "node": "12.13.0",
-    "yarn": "1.19.2"
+    "node": "^15.14.0",
+    "yarn": "^1.22.10"
   },
   "description": "diamici app",
   "main": "index.js",
