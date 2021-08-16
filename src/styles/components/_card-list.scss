@@ -1,0 +1,21 @@
+.card_form__list {
+    color: $light-white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: $m-size;
+}
+
+.card_list_item__row {
+    display: flex;
+    justify-content: space-between;
+    width: calc(#{$element-width} + #{$l-size});
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.card_item__label {
+    display: flex;
+    align-items: center;
+    padding-left: $m-size;
+}

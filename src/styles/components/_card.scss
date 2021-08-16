@@ -1,0 +1,27 @@
+@import './card-body';
+@import './card-footer';
+@import './card-header';
+@import './card-list';
+@import './card-item';
+
+.card {
+    width: $card-width;
+    min-height: $card-height;
+    border: .1rem solid $lighter-white;
+    border-radius: $s-size;
+    background-color: $dark-gray;
+    background: $linear-grey;
+    background-attachment: fixed;
+}
+
+.card__diagonal-light {
+    position: fixed;
+    z-index: 9;
+    height: 82rem;
+    width: $card-width;
+    background-color: rgba(0,0,0,0.3);
+    background: $linear-grey;
+    margin-left: -14.4rem;
+    transform: rotate(-22deg);
+    margin-top: calc(-#{$element-width} - #{$s-size});
+}

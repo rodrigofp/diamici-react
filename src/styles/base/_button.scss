@@ -1,0 +1,56 @@
+.card_body__button {
+    background-size: 200% auto;
+    border: .1rem solid $lighter-white;
+    border-radius: $m-size;
+    color: $lighter-white;
+    font-weight: bold;
+    margin-top: $m-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.4s;
+
+    &:active, &:hover{
+        background-position: right center;
+        transition: .1s;
+    }
+}
+
+//Sizes
+.button--rounded {
+    border-radius: $l-size;
+    margin-top: 0;
+    width: $ls-size;
+    height: $ls-size;
+}
+
+.button--m {
+    width: calc(#{$element-width} + #{$l-size});
+    height: $l-size;
+}
+
+.button--s {
+    width: $l-size;
+    height: $l-size;
+}
+
+
+//Colors
+.button--default {
+    background-image: $linear-button;
+}
+
+.button--green {
+    background-image: $linear-green;
+}
+
+.button--red {
+    background-image: $linear-red;
+}
+
+//Custom
+.button--inside {
+    margin-bottom: $m-size;
+    margin-left: -$l-size;
+}
+

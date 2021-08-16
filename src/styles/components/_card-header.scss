@@ -1,0 +1,15 @@
+
+
+.card__header {
+    position: fixed;
+    background: url('../assets/images/logo-text-no-bg.png') center center no-repeat;
+    background-size: 91%;
+    width: inherit;
+    height: 10.1rem;
+    background-color: rgba(20,20,20,.8);
+    margin: 0;
+    border-top: 1px solid $lighter-white;
+    border-top-right-radius: $s-size;
+    border-top-left-radius: $s-size;
+    z-index: 30;
+}

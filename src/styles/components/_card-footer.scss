@@ -1,0 +1,28 @@
+.card__footer {
+    position: sticky;
+    bottom: 0;
+    margin-top: .4rem;
+    width: 100%;
+    background-color: rgba(200, 200, 200, 1);
+    // background: url('/images/menu-bg.jpg');
+    background-size: cover;
+    background-position: 60%;
+    opacity: 1;
+    height: $card-footer-height;
+    z-index: 30;
+    border-bottom-left-radius: $s-size;
+    border-bottom-right-radius: $s-size;
+    display: flex;
+    align-items: center;
+}
+
+.card_footer__menu {
+    width: 100%;
+}
+
+.card_footer__row {
+    z-index: 15;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

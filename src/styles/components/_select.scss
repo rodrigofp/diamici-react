@@ -1,0 +1,124 @@
+.select__wrapper {
+    margin-top: $m-size;
+    position: relative;
+    user-select: none;
+    width: calc(#{$element-width} + #{$l-size});
+}
+
+.select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: inherit;
+    transition: all 0.5s;
+}
+
+.select.open {
+    margin-bottom: 9rem;
+    transition: all 0.5s;
+}
+
+.select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $s-size;
+    color: #ddd;
+    height: $l-size;
+    width: calc(#{$element-width} + #{$m-size});
+    border-radius: $m-size;
+    border: 1px solid #888;
+    cursor: pointer;
+}
+
+.select__options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    width: calc(#{$element-width} + #{$l-size});
+    overflow: hidden;
+    border: 1px solid #eee;
+    border-radius: $m-size;
+    background: transparent;
+    transition: all 0.8s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 30;
+    line-height: $m-size;
+    padding: $s-size 0;
+}
+
+.select.open .select__options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.select.open .select__trigger{
+    border-color: #eee;
+}
+
+.option {
+    position: relative;
+    display: block;
+    padding: 0 $m-size;
+    color: #ddd;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.8s;
+}
+
+.option:active, .option:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.option.selected {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#default {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.select__arrow {
+    position: relative;
+    height: 15px;
+    width: 15px;
+
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 0.15rem;
+        height: 100%;
+        transition: all 0.8s;
+    }
+
+    &::before {
+        left: 5px;
+        transform: rotate(45deg);
+        background-color: #888;
+    }
+
+    &::after {
+        left: -5px;
+        transform: rotate(-45deg);
+        background-color: #888;
+    }
+}
+
+.open .select__arrow::before {
+    left: 5px;
+    transform: rotate(-45deg);
+    background-color: #ddd;
+}
+.open .select__arrow::after {
+    left: -5px;
+    transform: rotate(45deg);
+    background-color: #ddd;
+}

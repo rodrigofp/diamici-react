@@ -1,0 +1,40 @@
+.card_body__form {
+    margin-top: $l-size;
+}
+
+.card_body__form_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_body__text_box {
+    background-color: inherit;
+    border: 0px;
+    border: 1px solid #888;
+    border-radius: $m-size;
+    box-sizing: border-box;
+    color: $light-white;
+    height: $l-size;
+    margin-bottom: $m-size;
+    padding: 0 $m-size;
+    width: calc(#{$element-width} + #{$l-size});
+
+    &:focus {
+        outline: 0;
+        border: .2rem solid $lighter-white;
+    }
+}
+
+.text_box--with_button {
+    padding-right: $ls-size;
+}
+
+.card_body__check_box {
+    margin-right: $s-size;
+    z-index: 10;
+}
+
+.card_body__check_box_text {
+    color: $light-white;
+}

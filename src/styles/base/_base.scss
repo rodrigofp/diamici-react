@@ -1,0 +1,54 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    color: $light-black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5rem;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 0 $m-size;
+    background-color: rgb(70,70,70);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.content {
+    overflow-x: hidden;
+    max-width: $content-width;
+    max-height: $content-height;
+    border-radius: $s-size;
+}
+
+.title {
+    color: $light-white;
+    text-align: center;
+    padding-top: $m-size;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+
+    &:disabled {
+        cursor: default;
+    }
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}

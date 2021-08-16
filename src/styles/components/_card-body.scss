@@ -1,0 +1,12 @@
+.card__body {
+    margin-top: 10rem;
+    width: inherit;
+    min-height: calc(#{$card-height} - #{$card-footer-height});
+    margin-bottom: .2rem;
+}
+
+.card_body__row {
+    position: relative;
+    z-index: 15;
+    width: 100%;
+}

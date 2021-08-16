@@ -1,0 +1,34 @@
+.react-card-flipper {
+    margin-top: $m-size;
+}
+
+.card__item--front,
+.card__item--back {
+    align-items: center;
+    border: .1rem solid $lighter-white;
+    border-radius: $l-size;
+    color: $light-white;
+    display: flex;
+    min-height: 13.5rem;
+    margin: 0 auto;
+    width: calc(#{$element-width} + (3 * #{$m-size}));
+}
+
+.card__item--front {
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card__item--back {
+    justify-content: space-around;
+
+    & .card_body__button {
+        margin-top: -$s-size;
+    }
+}
+
+.card_item__row {
+    margin-bottom: $s-size;
+    text-align: center;
+    width: auto !important;
+}
