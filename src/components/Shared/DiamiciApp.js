@@ -1,5 +1,5 @@
 import React from 'react';
-import AppRouter from '../Routers/AppRouter';
+import AppRouter from '../../Routers/AppRouter';
 
 const DiamiciApp = () => (
     <div className="content">

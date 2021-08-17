@@ -25,6 +25,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "css-loader": "^5.0.1",
     "express": "4.15.4",
     "file-loader": "^6.2.0",

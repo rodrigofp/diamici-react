@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = (env) => {
     const isProduction = env && env.production;
@@ -9,7 +10,10 @@ module.exports = (env) => {
             path: path.join(__dirname, 'public'),
             filename: 'bundle.js'
         },
-        plugins: [new MiniCssExtractPlugin()],
+        plugins: [
+            new MiniCssExtractPlugin(),
+            new CaseSensitivePathsPlugin()
+        ],
         module: {
             rules: [{
                 loader: 'babel-loader',
