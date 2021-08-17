@@ -3,11 +3,13 @@ import Button from '../Shared/Button';
 import CardItemList from '../Shared/CardItemList';
 import TextBox from '../Shared/TextBox';
 import TextBoxWithButton from '../Shared/TextBoxWithButton';
+import { connect } from 'react-redux';
 
-export default class ProductForm extends React.Component {
+class ProductForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: props.product ? props.product.id : '',
             identifier: props.product ? props.product.identifier : '',
             name: props.product ? props.product.name : '',
             colors: props.product ? [...props.product.colors] : [],
@@ -44,6 +46,12 @@ export default class ProductForm extends React.Component {
     };
 
     onRemoveColor = (colorToRemove) => {
+        if(this.state.id && this.props.inventories.some((inv) => {
+            return inv.identifier === this.props.product.identifier && inv.color === colorToRemove
+        })) {
+            alert('Esta cor está sendo usada em um estoque, remova o estoque antes de excluir essa cor');
+            return;
+        }
         const colorsBefore = this.state.colors;
         const colors = colorsBefore.filter((color) => color !== colorToRemove);
 
@@ -69,6 +77,13 @@ export default class ProductForm extends React.Component {
     };
 
     onRemoveSize = (sizeToRemove) => {
+        if(this.state.id && this.props.inventories.some((inv) => {
+            return inv.identifier === this.props.product.identifier && inv.size === sizeToRemove
+        })) {
+            alert('Este tamanho está sendo usado em um estoque, remova o estoque antes de excluir esse tamanho');
+            return;
+        }
+
         const sizesBefore = this.state.sizes;
         sizes = sizesBefore.filter((size) => size !== sizeToRemove);
 
@@ -79,10 +94,18 @@ export default class ProductForm extends React.Component {
         e.preventDefault();
         let errorMessage = '';
 
-        if(!this.state.identifier || this.state.identifier.length !== 7)
-            errorMessage += 'O campo código é obrigatório e precisa ter 7 dígitos\n';
+        if(!this.state.identifier)
+            errorMessage += 'O campo código é obrigatório\n';
+        if(this.state.identifier.length !== 7)
+            errorMessage += 'O campo código precisa ter 7 dígitos\n';
         if(!this.state.name)
             errorMessage += 'O campo nome é obrigatório\n';
+        if(this.props.products.some((p) => p.identifier.toLowerCase() === this.state.identifier.toLowerCase() 
+            && p.id !== this.state.id))
+            errorMessage += 'O campo código já existe\n';
+        if(this.props.products.some((p) => p.name.toLowerCase() === this.state.name.toLowerCase()
+            && p.id !== this.state.id))
+            errorMessage += 'O campo nome já existe\n';
 
         if(errorMessage){
             alert(errorMessage);
@@ -131,3 +154,12 @@ export default class ProductForm extends React.Component {
         );
     }
 };
+
+const mapStateToProps = (state) => {
+    return {
+        products: state.products,
+        inventories: state.inventories
+    }
+}
+
+export default connect(mapStateToProps)(ProductForm);

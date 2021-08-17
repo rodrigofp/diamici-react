@@ -6,7 +6,7 @@ import { editProduct } from '../../actions/products';
 
 const ProductEdit = (props) => {
     return (
-        <div className="card_body__content">
+    <div className="card_body__content">
         <Title>ALTERAÇÃO DE PRODUTO</Title>
         <div className="card_body__row">
             <ProductForm

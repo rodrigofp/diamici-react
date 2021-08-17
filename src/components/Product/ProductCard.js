@@ -2,8 +2,9 @@ import React from 'react';
 import ReactCardFlip from 'react-card-flip';
 import ProductBack from './ProductBack';
 import ProductFront from './ProductFront';
+import { connect } from 'react-redux';
 
-export default class ProductCard extends React.Component {
+class ProductCard extends React.Component {
     state = {
         isFlipped: false
     };
@@ -17,6 +18,10 @@ export default class ProductCard extends React.Component {
     };
 
     handleRemove = () => {
+        if(this.props.inventories.some((inv) => inv.identifier === this.props.product.identifier)){
+            alert('Esse produto possuí estoque, remova o estoque antes de excluir esse produto');
+            return;
+        }
         this.props.onRemove(this.props.product.id);
     }
 
@@ -34,3 +39,11 @@ export default class ProductCard extends React.Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        inventories: state.inventories
+    }
+}
+
+export default connect(mapStateToProps)(ProductCard);

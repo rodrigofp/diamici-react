@@ -4,15 +4,18 @@ import Edit from '../../assets/images/edit.png';
 import Transfer from '../../assets/images/transfer.png';
 import Sell from '../../assets/images/sell.png';
 import Bin from '../../assets/images/bin.png';
+import { Link } from 'react-router-dom';
 
 const InventoryBack = (props) => (
     <div
         className="card__item--back"
         onClick={props.handleClick} >
-        <Button
-            extraClasses="button--rounded button--s button--default">
-            {<img src={Edit} />}
-        </Button>
+        <Link to={`inventory-edit/${props.id}`}>
+            <Button
+                extraClasses="button--rounded button--s button--default">
+                {<img src={Edit} />}
+            </Button>
+        </Link>
         <Button
             extraClasses="button--rounded button--s button--default">
             {<img src={Transfer} />}

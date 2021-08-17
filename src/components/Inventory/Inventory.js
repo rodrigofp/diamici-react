@@ -36,7 +36,7 @@ export default class Inventory extends React.Component {
     render() {
         return (
             <div className="card_body__content">
-                <Title>ESTOQUE</Title>
+                <Title>LISTA DE ESTOQUE</Title>
                 <div className="card_body__row margin_bottom">
                     <Link to="inventory-create">
                         <Button

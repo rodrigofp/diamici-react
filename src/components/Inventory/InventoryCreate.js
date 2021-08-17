@@ -10,7 +10,6 @@ const InventoryCreate = (props) => (
         <div className="card_body__row">
             <InventoryForm
                 onSubmit={(inventory) => {
-                    console.log(inventory);
                     props.dispatch(addInventory(inventory));
                     props.history.push('/inventories');
                 }} />

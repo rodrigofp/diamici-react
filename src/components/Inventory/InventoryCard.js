@@ -22,7 +22,9 @@ export default class InventoryCard extends React.Component {
                 <InventoryFront
                     inventory={this.props.inventory}
                     handleClick={this.handleClick} />
-                <InventoryBack handleClick={this.handleClick} />
+                <InventoryBack
+                    id={this.props.inventory.id}
+                    handleClick={this.handleClick} />
             </ReactCardFlip>
         );
     };

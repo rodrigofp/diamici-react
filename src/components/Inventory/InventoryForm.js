@@ -7,17 +7,19 @@ import TextBox from '../Shared/TextBox';
 class InventoryForm extends React.Component {
     constructor(props) {
         super(props);
+        const product = props.inventory ? props.products.find((p) => p.identifier === props.inventory.identifier) : undefined;
         this.state = {
-            identifier: '',
-            name: '',
-            color: '',
-            size: '',
-            userId: 1,
-            quantity: '',
-            selectedProduct: undefined,
-            firstLineProduct: 'Escolha um produto',
-            firstLineColor: 'Escolha uma cor',
-            firstLineSize: 'Escolha um tamanho',
+            id: product ? props.inventory.id : '',
+            identifier: product ? props.inventory.identifier : '',
+            name: product ? props.inventory.name : '',
+            color: product ? props.inventory.color : '',
+            size: product ? props.inventory.size : '',
+            userId: product ? props.inventory.userId : 1,
+            quantity: product ? props.inventory.quantity : '',
+            selectedProduct: product,
+            firstLineProduct: product ? product.name : 'Escolha um produto',
+            firstLineColor: product ? props.inventory.color : 'Escolha uma cor',
+            firstLineSize: product ? props.inventory.size : 'Escolha um tamanho',
         };
     };
 
@@ -69,7 +71,6 @@ class InventoryForm extends React.Component {
             size: sizeSelected.value
         }));
     };
-
     onQuantityChange = (e) => {
         const quantity = e.target.value;
         if(!quantity || quantity.match(/^\d{1,}$/)){
@@ -86,7 +87,13 @@ class InventoryForm extends React.Component {
         if(!this.state.size)
             errorMessage += 'Escolha um tamanho\n';
         if(!this.state.quantity)
-            errorMessage += 'O campo de quantidade é obrigatório';
+            errorMessage += 'O campo de quantidade é obrigatório\n';
+        if(this.props.inventories.some((inv) =>
+            inv.identifier === this.state.identifier &&
+            inv.color === this.state.color &&
+            inv.size === this.state.size &&
+            inv.id !== this.state.id))
+            errorMessage += 'Você já tem esse estoque cadastrado\n';
 
         if(errorMessage){
             alert(errorMessage);
@@ -141,7 +148,8 @@ class InventoryForm extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products
+        products: state.products,
+        inventories: state.inventories
     };
 };
 
