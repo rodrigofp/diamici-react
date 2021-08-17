@@ -13,7 +13,7 @@ const Menu = () => (
                 <img src={Shirt} />
             </Link>
             <Link
-                to="/inventory"
+                to="/inventories"
                 className="card_body__button button--default button--rounded">
                 <img src={Inventory} />
             </Link>

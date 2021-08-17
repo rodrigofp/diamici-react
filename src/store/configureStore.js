@@ -1,6 +1,5 @@
 import { createStore, combineReducers } from "redux";
 import productsReducer from '../reducers/products'
-import filtersReducer from '../reducers/filters'
 import inventoriesReducer from '../reducers/inventories'
 
 export default () => {
@@ -8,7 +7,6 @@ export default () => {
         combineReducers({
             products: productsReducer,
             inventories: inventoriesReducer,
-            filters: filtersReducer
         }),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
