@@ -10,7 +10,6 @@
   "author": "Shad",
   "license": "MIT",
   "scripts": {
-    "serve": "live-server public/",
     "build": "webpack --optimization-minimize --env production",
     "build-dev": "webpack",
     "dev-server": "webpack serve",
@@ -29,7 +28,6 @@
     "css-loader": "^5.0.1",
     "express": "4.15.4",
     "file-loader": "^6.2.0",
-    "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^2.2.0",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
@@ -45,11 +43,10 @@
     "url-loader": "^4.1.1",
     "uuid": "^8.3.2",
     "validator": "^13.1.17",
-    "webpack": "^5.4.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack": "^5.4.0"
   },
   "devDependencies": {
-    "webpack-cli": "^4.2.0"
+    "webpack-dev-server": "^3.11.0"
   },
   "repository": "git@github.com:rodrigofp/diamici-react.git"
 }
