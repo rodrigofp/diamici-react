@@ -1,21 +1,29 @@
 import { v4 as uuidv4 } from 'uuid';
+import database from '../firebase/firebase';
 
 //ADD PRODUCT
-export const addProduct = ({
-        identifier = '',
-        name = '',
-        colors = [],
-        sizes =  []
-    } = {}) => ({
+export const addProduct = (product) => ({
     type: 'ADD_PRODUCT',
-    product: {
-        id: uuidv4(),
-        identifier,
-        name,
-        colors,
-        sizes
-    }
+    product
 });
+
+export const startAddProduct = (productData = {}) => {
+    return (dispatch) => {
+        const {
+            identifier = '',
+            name = '',
+            colors = [],
+            sizes =  []
+        } = productData;
+        const product = { identifier, name, colors, sizes };
+        database.ref('products').push(product).then((ref) => {
+            dispatch(addProduct({
+                id: ref.key,
+                ...product
+            }));
+        });
+    }
+};
 
 //REMOVE_PRODUCT
 export const removeProduct = ({ id } = {}) => ({

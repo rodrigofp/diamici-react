@@ -4,26 +4,32 @@ import ProductForm from './ProductForm';
 import Title from '../Shared/Title';
 import { editProduct } from '../../actions/products';
 
-const ProductEdit = (props) => {
-    return (
-    <div className="card_body__content">
-        <Title>ALTERAÇÃO DE PRODUTO</Title>
-        <div className="card_body__row">
-            <ProductForm
-                product={props.product}
-                onSubmit={(product) => {
-                    props.dispatch(editProduct(props.product.id, product));
-                    props.history.push('/products');
-                }} />
-        </div>
-    </div>
-    );
-};
-
-const mapStateToProps = (state, props) => {
-    return {
-        product: state.products.find((product) => product.id === props.match.params.id)
+export class ProductEdit extends React.Component {
+    onSubmit = (product) => {
+        this.props.editProduct(this.props.product.id, product);
+        this.props.history.push('/products');
     };
+
+    render() {
+        return (
+            <div className="card_body__content">
+                <Title>ALTERAÇÃO DE PRODUTO</Title>
+                <div className="card_body__row">
+                    <ProductForm
+                        product={this.props.product}
+                        onSubmit={this.onSubmit} />
+                </div>
+            </div>
+        );
+    }
 };
 
-export default connect(mapStateToProps)(ProductEdit);
+const mapStateToProps = (state, props) => ({
+    product: state.products.find((product) => product.id === props.match.params.id)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    editProduct: (id, product) => dispatch(editProduct(id, product))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductEdit);
