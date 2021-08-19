@@ -18,7 +18,9 @@ export default (state = productsReducerDefaultState, action) => {
                 } else {
                     return product;
                 }
-            })
+            });
+        case 'SET_PRODUCTS':
+            return action.products;
         default:
             return state;
     }

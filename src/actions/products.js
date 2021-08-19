@@ -37,3 +37,34 @@ export const editProduct = (id, updates) => ({
     id,
     updates
 });
+
+// SET_PRODUCTS
+export const setProducts = (products) => ({
+    type: 'SET_PRODUCTS',
+    products
+});
+
+export const startSetProducts = () => {
+    return (dispatch) => {
+        return database.ref('products').once('value').then((snapshot) => {
+            const products =[];
+            snapshot.forEach((child) => {
+                const product = {
+                    id: child.key,
+                    identifier: child.val().identifier,
+                    name: child.val().name,
+                    colors: [],
+                    sizes: []
+                };
+                child.val().colors.forEach((c) => {
+                    product.colors.push(c);
+                });
+                child.val().sizes.forEach((s) => {
+                    product.sizes.push(s);
+                });
+                products.push(product);
+            });
+            dispatch(setProducts(products));
+        })
+    };
+};
