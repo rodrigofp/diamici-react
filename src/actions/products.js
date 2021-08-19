@@ -31,12 +31,28 @@ export const removeProduct = ({ id } = {}) => ({
     id
 });
 
+export const startRemoveProduct = ({ id } = {}) => {
+    return (dispatch) => {
+        database.ref(`products/${id}`).remove().then(() => {
+            dispatch(removeProduct({ id }));
+        })
+    }
+};
+
 //EDIT_PRODUCT
 export const editProduct = (id, updates) => ({
     type: 'EDIT_PRODUCT',
     id,
     updates
 });
+
+export const startEditProduct = (id, updates) => {
+    return (dispatch) => {
+        database.ref(`products/${id}`).update(updates).then(() => {
+            dispatch(editProduct(id, updates));
+        });
+    }
+}
 
 // SET_PRODUCTS
 export const setProducts = (products) => ({

@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ProductForm from './ProductForm';
 import Title from '../Shared/Title';
-import { editProduct } from '../../actions/products';
+import { startEditProduct } from '../../actions/products';
 
 export class ProductEdit extends React.Component {
     onSubmit = (product) => {
-        this.props.editProduct(this.props.product.id, product);
+        this.props.startEditProduct(this.props.product.id, product);
         this.props.history.push('/products');
     };
 
@@ -29,7 +29,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    editProduct: (id, product) => dispatch(editProduct(id, product))
+    startEditProduct: (id, product) => dispatch(startEditProduct(id, product))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductEdit);

@@ -85,7 +85,7 @@ class ProductForm extends React.Component {
         }
 
         const sizesBefore = this.state.sizes;
-        sizes = sizesBefore.filter((size) => size !== sizeToRemove);
+        const sizes = sizesBefore.filter((size) => size !== sizeToRemove);
 
         this.setState(() => ({ sizes }))
     };
