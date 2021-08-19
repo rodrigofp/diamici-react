@@ -5,7 +5,7 @@ const DiamiciApp = () => (
     <div className="content">
         <div className="card">
             <div className="card__diagonal-light"></div>
-            <div className="card__header"></div>
+            {location.pathname !== "/" && <div className="card__header"></div>}
             <AppRouter />
         </div>
     </div>

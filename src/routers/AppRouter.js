@@ -13,7 +13,7 @@ const AppRouter = () => (
     <BrowserRouter>
         <div className="card__body">
             <Switch>
-                <Route path="/login" component={Login} exact={true} />
+                <Route path="/" component={Login} exact={true} />
                 <Route path="/products" component={Product} exact={true} />
                 <Route path="/product-create" component={ProductCreate} exact={true} />
                 <Route path="/product-edit/:id" component={ProductEdit} exact={true} />
@@ -22,7 +22,7 @@ const AppRouter = () => (
                 <Route path="/inventory-edit/:id" component={InventoryEdit} exact={true} />
             </Switch>
         </div>
-        {location.pathname !== "/login" && <CardFooter />}
+        {location.pathname !== "/" && <CardFooter />}
     </BrowserRouter>
 );
 

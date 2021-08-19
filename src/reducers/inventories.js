@@ -18,7 +18,9 @@ export default (state = inventoriesReducerDefaultState, action) => {
                 } else {
                     return inventory;
                 }
-            })
+            });
+        case 'SET_INVENTORIES':
+            return action.inventories;
         default:
             return state;
     }

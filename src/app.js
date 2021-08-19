@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import { startSetProducts } from './actions/products';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import { startSetInventories } from './actions/inventories';
 
 const store = configureStore();
 
@@ -19,5 +20,7 @@ const jsx = (
 ReactDOM.render(<Spinner />, document.getElementById('app'));
 
 store.dispatch(startSetProducts()).then(() => {
-    ReactDOM.render(jsx, document.getElementById('app'));
+    store.dispatch(startSetInventories()).then(() => {
+        ReactDOM.render(jsx, document.getElementById('app'));
+    });
 });

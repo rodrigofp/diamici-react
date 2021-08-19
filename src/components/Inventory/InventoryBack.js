@@ -25,6 +25,7 @@ const InventoryBack = (props) => (
             {<img src={Sell}/>}
         </Button>
         <Button
+            handleClick={props.handleRemove}
             extraClasses="button--rounded button--s button--red">
             {<img src={Bin}/>}
         </Button>

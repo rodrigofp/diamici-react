@@ -16,6 +16,11 @@ export default class InventoryCard extends React.Component {
         }));
     };
 
+    handleRemove = () => {
+        //TODO: Validar usuário
+        this.props.onRemove(this.props.inventory.id);
+    }
+
     render() {
         return (
             <ReactCardFlip isFlipped={this.state.isFlipped}>
@@ -24,7 +29,8 @@ export default class InventoryCard extends React.Component {
                     handleClick={this.handleClick} />
                 <InventoryBack
                     id={this.props.inventory.id}
-                    handleClick={this.handleClick} />
+                    handleClick={this.handleClick}
+                    handleRemove={this.handleRemove} />
             </ReactCardFlip>
         );
     };

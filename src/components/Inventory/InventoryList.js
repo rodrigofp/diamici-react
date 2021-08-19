@@ -1,20 +1,28 @@
 import React from 'react';
 import InventoryCard from './InventoryCard';
 import { connect } from 'react-redux';
-import { removeInventory } from '../../actions/inventories';
+import { startRemoveInventory } from '../../actions/inventories';
 
-const InventoryList = (props) => (
-    <div className="card_body__row">
-        {
-            props.inventories.map((inventory) =>
-                <InventoryCard
-                    key={inventory.id}
-                    inventory={inventory} />
-            )
-        }
-    </div>
-);
+export class InventoryList extends React.Component {
+    onRemove = (id) => {
+        this.props.startRemoveInventory({ id });
+    };
 
+    render() {
+        return (
+            <div className="card_body__row">
+                {
+                    this.props.inventories.map((inventory) =>
+                        <InventoryCard
+                            onRemove={this.onRemove}
+                            key={inventory.id}
+                            inventory={inventory} />
+                    )
+                }
+            </div>
+        );
+    };
+};
 const mapStateToProps = (state, props) => {
     const inventories = state.inventories.filter((inv) => inv.userId == props.userId);
     return {
@@ -22,4 +30,8 @@ const mapStateToProps = (state, props) => {
     };
 };
 
-export default connect(mapStateToProps)(InventoryList);
+const mapDispatchToProps = (dispatch) => ({
+    startRemoveInventory: ({id}) => dispatch(startRemoveInventory({id}))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(InventoryList);

@@ -10,13 +10,13 @@ import { Link } from 'react-router-dom';
 export default class Inventory extends React.Component {
     state = {
         users: [{
-            id: 1,
+            id: '1',
             value: 'Administrador 1',
         },{
-            id: 2,
+            id: '2',
             value: 'Administrador 2',
         },{
-            id: 3,
+            id: '3',
             value: 'Administrador 3',
         }],
         idUserSelected: undefined,
