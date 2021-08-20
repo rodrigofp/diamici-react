@@ -7,14 +7,16 @@ import TextBox from '../Shared/TextBox';
 class InventoryForm extends React.Component {
     constructor(props) {
         super(props);
-        const product = props.inventory ? props.products.find((p) => p.identifier === props.inventory.identifier) : undefined;
+        const product = props.inventory
+            ? props.products.find((p) => p.identifier === props.inventory.identifier)
+            : undefined;
         this.state = {
             id: product ? props.inventory.id : '',
             identifier: product ? props.inventory.identifier : '',
             name: product ? props.inventory.name : '',
             color: product ? props.inventory.color : '',
             size: product ? props.inventory.size : '',
-            userId: product ? props.inventory.userId : 1,
+            userId: product ? props.inventory.userId : props.uid,
             quantity: product ? props.inventory.quantity : '',
             selectedProduct: product,
             firstLineProduct: product ? product.name : 'Escolha um produto',
@@ -92,6 +94,7 @@ class InventoryForm extends React.Component {
             inv.identifier === this.state.identifier &&
             inv.color === this.state.color &&
             inv.size === this.state.size &&
+            inv.userId === this.state.userId &&
             inv.id !== this.state.id))
             errorMessage += 'Você já tem esse estoque cadastrado\n';
 
@@ -108,7 +111,6 @@ class InventoryForm extends React.Component {
             });
         }
     };
-
 
     render() {
         return(
@@ -149,7 +151,8 @@ class InventoryForm extends React.Component {
 const mapStateToProps = (state) => {
     return {
         products: state.products,
-        inventories: state.inventories
+        inventories: state.inventories,
+        uid: state.users.uid
     };
 };
 

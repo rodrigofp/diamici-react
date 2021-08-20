@@ -7,8 +7,9 @@ const CheckBox = (props) => (
             name={props.name}
             className="card_body__check_box" />
         <label
-            className="card_body__check_box_text"
-            for={props.name}>{props.text}</label>
+            className="card_body__check_box_text">
+            {props.text}
+        </label>
     </div>
 );
 

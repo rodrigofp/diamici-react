@@ -1,4 +1,6 @@
 import database from '../firebase/firebase';
+import { setInventories } from './inventories';
+import { setUsers } from './users';
 
 //ADD PRODUCT
 export const addProduct = (product) => ({
@@ -59,27 +61,36 @@ export const setProducts = (products) => ({
     products
 });
 
-export const startSetProducts = () => {
+export const startSetEverything = () => {
     return (dispatch) => {
-        return database.ref('products').once('value').then((snapshot) => {
-            const products =[];
-            snapshot.forEach((child) => {
-                const product = {
+        return database.ref().once('value').then((snapshot) => {
+            const products = [];
+            snapshot.child('products').forEach((child) => {
+                products.push({
                     id: child.key,
                     identifier: child.val().identifier,
                     name: child.val().name,
-                    colors: [],
-                    sizes: []
-                };
-                child.val().colors.forEach((c) => {
-                    product.colors.push(c);
+                    colors: child.val().colors,
+                    sizes: child.val().sizes
                 });
-                child.val().sizes.forEach((s) => {
-                    product.sizes.push(s);
+            });
+            const inventories = [];
+            snapshot.child('inventories').forEach((child) => {
+                inventories.push({
+                    id: child.key,
+                    ...child.val()
                 });
-                products.push(product);
+            });
+            const users = [];
+            snapshot.child('users').forEach((child) => {
+                users.push({
+                    id: child.key,
+                    ...child.val()
+                });
             });
             dispatch(setProducts(products));
+            dispatch(setInventories(inventories));
+            dispatch(setUsers(users));
         })
     };
 };

@@ -1,5 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth';
+import products from '../reducers/products';
 
 
 const config  = {
@@ -13,7 +15,7 @@ const config  = {
 };
 
 firebase.initializeApp(config);
-
 const database = firebase.database();
+const auth = firebase.auth();
 
-export { firebase, database as default };
+export { firebase, database as default, auth };

@@ -60,19 +60,3 @@ export const setInventories = (inventories) => ({
     type: 'SET_INVENTORIES',
     inventories
 });
-
-export const startSetInventories = () => {
-    return (dispatch) => {
-        return database.ref('inventories').once('value').then((snapshot) => {
-            const inventories = [];
-            snapshot.forEach((child) => {
-                inventories.push({
-                    id: child.key,
-                    ...child.val()
-                });
-            });
-            dispatch(setInventories(inventories));
-        });
-    };
-};
-

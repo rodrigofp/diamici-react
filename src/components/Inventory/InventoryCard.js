@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactCardFlip from 'react-card-flip';
+import { connect } from 'react-redux';
 import InventoryBack from './InventoryBack';
 import InventoryFront from './InventoryFront';
 
-export default class InventoryCard extends React.Component {
+export class InventoryCard extends React.Component {
     state = {
         isFlipped: false
     };
@@ -17,7 +18,10 @@ export default class InventoryCard extends React.Component {
     };
 
     handleRemove = () => {
-        //TODO: Validar usuário
+        if(this.props.uid !== this.props.inventory.userId){
+            alert('Você não pode excluir esse estoque pois ele não te pertence');
+            return;
+        }
         this.props.onRemove(this.props.inventory.id);
     }
 
@@ -35,3 +39,9 @@ export default class InventoryCard extends React.Component {
         );
     };
 };
+
+const mapStateToProps = (state) => ({
+    uid: state.users.uid
+});
+
+export default connect(mapStateToProps)(InventoryCard);
