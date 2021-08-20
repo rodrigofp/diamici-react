@@ -10,12 +10,19 @@ const InventoryBack = (props) => (
     <div
         className="card__item--back"
         onClick={props.handleClick} >
-        <Link to={`inventory-edit/${props.id}`}>
+        {props.isOwner && <Link to={`inventory-edit/${props.id}`}>
             <Button
                 extraClasses="button--rounded button--s button--default">
                 {<img src={Edit} />}
             </Button>
-        </Link>
+        </Link>}
+        {!props.isOwner &&
+            <Button
+                handleClick={() => { alert('Você não pode editar este item'); }}
+                extraClasses="button--rounded button--s button--default">
+                {<img src={Edit} />}
+            </Button>
+        }
         <Button
             extraClasses="button--rounded button--s button--default">
             {<img src={Transfer} />}
