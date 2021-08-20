@@ -18,12 +18,16 @@ export class InventoryCard extends React.Component {
     };
 
     handleRemove = () => {
-        if(this.props.uid !== this.props.inventory.userId){
+        if(!this.isOwner()){
             alert('Você não pode excluir esse estoque pois ele não te pertence');
             return;
         }
         this.props.onRemove(this.props.inventory.id);
-    }
+    };
+
+    isOwner = () => {
+        return this.props.uid === this.props.inventory.uid;
+    };
 
     render() {
         return (
@@ -33,6 +37,7 @@ export class InventoryCard extends React.Component {
                     handleClick={this.handleClick} />
                 <InventoryBack
                     id={this.props.inventory.id}
+                    isOwner={this.isOwner()}
                     handleClick={this.handleClick}
                     handleRemove={this.handleRemove} />
             </ReactCardFlip>
