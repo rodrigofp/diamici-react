@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Title from '../Shared/Title';
 import { startLogout } from '../../actions/users';
 import Button from '../Shared/Button';
+import CardLabel from '../Shared/CardLabel';
 
 export class User extends React.Component {
     onLogout = () => {
@@ -10,25 +11,28 @@ export class User extends React.Component {
     };
 
     render() {
+        console.log(this.props.user);
         return (
             <div className="card_body__content">
-                <Title>Informações do usuário</Title>
+                <Title>Informações da {this.props.user.name}</Title>
                 <div className="card_body__row">
-                    <div className="card_body__form_row">
                     <Button
                         handleClick={this.onLogout}
                         extraClasses="button--default button--m">
                         SAIR
                     </Button>
-                    </div>
                 </div>
             </div>
         );
     }
 };
 
+const mapStateToProps = (state) => ({
+    user: state.users.users.find((u) => u.id === state.users.uid)
+})
+
 const mapDispatchToProps = (dispatch) => ({
     startLogout: () => dispatch(startLogout())
 });
 
-export default connect(undefined, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(User);

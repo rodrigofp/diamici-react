@@ -14,7 +14,6 @@
 }
 
 .select.open {
-    margin-bottom: 9rem;
     transition: all 0.5s;
 }
 
@@ -52,6 +51,11 @@
     z-index: 30;
     line-height: $m-size;
     padding: $s-size 0;
+}
+
+.select__options_open {
+    position: relative !important;
+    transition: all 0.8s;
 }
 
 .select.open .select__options {

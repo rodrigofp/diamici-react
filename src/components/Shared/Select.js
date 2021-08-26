@@ -18,7 +18,7 @@ export default class Select extends React.Component {
                             onClick={this.handleClick}
                             className={`select ${this.state.open ? 'open' : ''}`}>
                             <SelectBox firstLine={this.props.firstLine} />
-                            <div className="select__options">
+                            <div className={`select__options${this.state.open ? ' select__options_open' : ''}`}>
                                 {
                                     this.props.options.map((option) =>
                                         <SelectOption
